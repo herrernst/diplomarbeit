@@ -7,7 +7,7 @@ require 'hpricot'
 require 'htmlentities'
 require 'models.rb'
 
-url = "http://news.google.de/news?output=rss"
+url = "http://news.google.de/news?output=rss&topc=h"
 detail_url = "http://news.google.de/news?ncl=1302753357&output=rss"
 
 rss = SimpleRSS.parse open(url)
