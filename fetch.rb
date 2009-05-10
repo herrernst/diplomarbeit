@@ -1,3 +1,5 @@
+#!/usr/local/bin/ruby
+
 require 'rubygems'
 require 'simple-rss'
 require 'open-uri'
@@ -16,7 +18,8 @@ rss.items.each do |i|
   ncl=i.guid.match(/cluster=(\d+)/)[1].to_i
   fr = Hpricot(coder.decode(i.description))
   count = fr.search('//b:last').inner_text.sub(/\./,'').match(/\d+/)[0].to_i
-  ii = Item.get(ncl) || Item.new(:id => ncl)
+  ii = Item.new
   ii.count = count
+  ii.ncl = ncl
   ii.save!
 end
